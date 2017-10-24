@@ -1,11 +1,14 @@
 package com.sarath.datastructure;
 
+import java.util.Hashtable;
+
 /**
  * Created by spilathottathil on 10/21/17.
  */
 public class BinarySearchTree {
 
     private TreeNode rootNode;
+    private Hashtable hashtable;
 
     public TreeNode findData(Integer data){
         if(rootNode != null){
@@ -22,4 +25,16 @@ public class BinarySearchTree {
             rootNode.insertData(data);
     }
 
+    public void deleteNode(Integer data){
+        TreeNode nodeToBeDeleted = findData(data);
+        nodeToBeDeleted.deleteNode();
+    }
+
+    public Integer getSmallest(){
+
+       if(rootNode != null){
+           return rootNode.getMinNode();
+       }
+        return null;
+    }
 }

@@ -8,9 +8,15 @@ public class TreeNode {
     private Integer data;
     private TreeNode leftNode;
     private TreeNode rightNode;
+    private boolean isDeleted;
 
     public TreeNode(Integer data){
         this.data = data;
+        this.isDeleted = false;
+    }
+
+    public boolean isDeleted(){
+        return isDeleted;
     }
 
     public Integer getData() {
@@ -39,15 +45,13 @@ public class TreeNode {
      * @return
      */
     public TreeNode  findData(Integer data){
-        if(this.data.compareTo(data)== 0){
+        if(this.data.compareTo(data)== 0 && !isDeleted){
             return this;
         }
-
-        if(this.data.compareTo(data) < 0  && leftNode != null)
+        if(this.data.compareTo(data) < 0  && leftNode != null )
           return leftNode.findData(data);
         if ( rightNode != null)
            return rightNode.findData(data);
-
         return null;
     }
 
@@ -68,12 +72,16 @@ public class TreeNode {
         }
     }
 
-    public void deleteNode(Integer data){
-        TreeNode nodeTobeDel = findData(data);
+    public void deleteNode(){
+       this.isDeleted = true;
+    }
 
-        if (nodeTobeDel.leftNode == null && nodeTobeDel.rightNode == null){
-            nodeTobeDel = null;
-        }
+    public Integer getMinNode(){
+
+        if(this.leftNode == null){
+            return this.data;
+        }else
+          return this.leftNode.getMinNode();
 
     }
 }
