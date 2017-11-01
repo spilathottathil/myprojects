@@ -84,4 +84,23 @@ public class TreeNode {
           return this.leftNode.getMinNode();
 
     }
+
+    int getNoLeafNodes(TreeNode node){
+
+        int count =0;
+
+        if(node == null){
+            return count;
+        }
+
+        if(this.leftNode == null && this.rightNode == null){
+            count++;
+        }
+
+        getNoLeafNodes(this.leftNode);
+        getNoLeafNodes(this.rightNode);
+
+        return count;
+
+    }
 }

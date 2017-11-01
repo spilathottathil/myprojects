@@ -37,4 +37,13 @@ public class BinarySearchTree {
        }
         return null;
     }
+
+    public int countLeafNodes(){
+        if(rootNode != null){
+           rootNode.getNoLeafNodes(rootNode);
+        }
+        return -1;
+    }
+
+
 }
