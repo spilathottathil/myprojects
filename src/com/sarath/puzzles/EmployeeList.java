@@ -27,6 +27,7 @@ public class EmployeeList {
         employeeList.add(emp3);
        // employeeList.forEach(e -> { if(e.getSalaray().equals(0) ) });
 
+
         //method 1
        // Collections.sort(employeeList);
         //insertionSort(employeeList);
@@ -35,7 +36,7 @@ public class EmployeeList {
         int[] arrayA = {23,45,6,78,9,45,32,99,878989,3,2,997};
         mergeSort(0,arrayA.length-1,arrayA);
         for (int i = 0; i <arrayA.length ; i++) {
-           // System.out.println(arrayA[i]);
+           System.out.println(arrayA[i]);
         }
 
     }
