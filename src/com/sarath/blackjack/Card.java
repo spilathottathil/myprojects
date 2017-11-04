@@ -27,6 +27,6 @@ public class Card {
 
     @Override
     public String toString(){
-        return "This card is "+rank+" of"+suit;
+        return rank+" of "+suit;
     }
 }

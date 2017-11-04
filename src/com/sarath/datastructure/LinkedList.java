@@ -1,12 +1,14 @@
 package com.sarath.datastructure;
 
+import java.util.HashSet;
+
 /**
  * Created by spilathottathil on 10/4/17.
  */
 public class LinkedList {
     private Node head;
 
-    public void insertNextNode(int data){
+    public void insertNextNode(int data) {
         Node newNode = new Node(data);
 
         newNode.setNextNode(this.head);
@@ -16,45 +18,39 @@ public class LinkedList {
 
     }
 
-    boolean searchLinkedList(int searchData){
+    boolean searchLinkedList(int searchData) {
         Node currentNode = this.head;
 
-        while(currentNode != null){
-            if(currentNode.getData() == searchData){
+        while (currentNode != null) {
+            if (currentNode.getData() == searchData) {
                 return true;
             }
-                currentNode = currentNode.getNextNode();
+            currentNode = currentNode.getNextNode();
 
         }
         return false;
     }
 
-    void insertAtSortedList(Node newNode){
+    void insertAtSortedList(Node newNode) {
         Node currentNode = this.head;
-        while(currentNode != null){
-            if(currentNode.getNextNode().getData() > newNode.getData()){
 
-                Node newNextNode = newNode.getNextNode();
-
-                newNextNode = currentNode.getNextNode();
-
-                currentNode = newNode ;
-
-
-            }else{
+        while (currentNode != null) {
+            if (currentNode.getNextNode().getData() > newNode.getData()) {
+                newNode.setNextNode(currentNode.getNextNode());
+                currentNode.setNextNode(newNode);
+            } else {
                 currentNode = currentNode.getNextNode();
             }
-
         }
 
     }
 
-    public int getLength(){
+    public int getLength() {
 
         int length = 0;
         Node currentNode = this.head;
 
-        while(currentNode != null){
+        while (currentNode != null) {
             length++;
             currentNode = currentNode.getNextNode();
 
@@ -64,8 +60,8 @@ public class LinkedList {
 
     }
 
-    void deleteHeadNode(){
-         this.head = this.head.getNextNode();
+    void deleteHeadNode() {
+        this.head = this.head.getNextNode();
 
     }
 
@@ -75,13 +71,50 @@ public class LinkedList {
 
         Node current = this.head;
 
-        while (current != null){
+        while (current != null) {
             result += current.toString();
-            if(current.getNextNode()!=null){
+            if (current.getNextNode() != null) {
                 result += ",";
             }
             current = current.getNextNode();
         }
         return result + "}";
     }
+
+    //Program to delete last occurance of a list.
+    public void DeleteKey(Node head, int key) {
+        Node prev = null;
+        Node current = head;
+        Node temp = null;
+
+        while (current != null) {
+            if (current.getNextNode() != null && current.getData() == key) {
+                prev = current;
+                temp = current.getNextNode();
+            }
+            current = current.getNextNode();
+        }
+        //now delete the node.
+        prev.setNextNode(temp);
+        current.setNextNode(null);
+    }
+
+    public void removeDuplicates(Node head) {
+
+        Node prev = null;
+        Node current = head;
+        HashSet<Integer> hashSetNodes = new HashSet<>();
+
+        while (current != null) {
+            if (hashSetNodes.contains(current.getData())) {
+                prev.setNextNode(current.getNextNode());
+            } else {
+                hashSetNodes.add(current.getData());
+                prev = current;
+            }
+            current = current.getNextNode();
+        }
+
+    }
+
 }

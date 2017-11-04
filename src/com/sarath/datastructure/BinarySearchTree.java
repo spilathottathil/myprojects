@@ -10,6 +10,7 @@ public class BinarySearchTree {
     private TreeNode rootNode;
     private Hashtable hashtable;
     private static Integer precedessor, successor;
+    private static int lheight=1, rheight=1;
 
     public TreeNode findData(Integer data){
         if(rootNode != null){
@@ -77,6 +78,27 @@ public class BinarySearchTree {
         return -1;
     }
 
+    //find height and print the data of binary tree
+    public void printBinaryTree(){
+
+
+    }
+
+    private static  int getHeight(TreeNode node){
+      if(node == null){
+            return -1;
+        }
+
+        //get left height
+       lheight = getHeight(node.getLeftNode());rheight = getHeight(node.getRightNode());
+
+        if(lheight > rheight){
+            return lheight+1;
+        }else return rheight+1;
+
+
+    }
+
        public static void main(String[] args) {
         BinarySearchTree binaryTree = new BinarySearchTree();
         //create the tree
@@ -85,6 +107,8 @@ public class BinarySearchTree {
            System.out.println("printing in order *****");
         root.inOrder(root);
            System.out.println("*******");
+            //int h = getHeight(root);
+          System.out.println(getHeight(root));
         findPreSuccessor(root, 30);
            System.out.println("presssedor of  is "+ precedessor);
            System.out.println("successor of is "+ successor);
