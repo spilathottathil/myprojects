@@ -8,6 +8,14 @@ import java.util.HashSet;
 public class LinkedList {
     private Node head;
 
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
     public void insertNextNode(int data) {
         Node newNode = new Node(data);
 
@@ -114,6 +122,41 @@ public class LinkedList {
             }
             current = current.getNextNode();
         }
+
+    }
+    //Get Nth element from a linked list.
+    public  int getElement(int n){
+        Node current = this.head;
+        int counter = 0;
+        if(n==0){
+            return this.head.getData();
+        }
+        while(current != null){
+            current = current.getNextNode();
+            if(counter == n){
+                return current.getData();
+            }
+            counter ++;
+        }
+        return n;
+    }
+
+    public static Node reverseList(Node current, Node prev){
+
+        LinkedList reversedList = new LinkedList();
+
+        if(current.getNextNode() == null){
+            reversedList.setHead(current);
+
+            return reversedList.getHead();
+        }else {
+
+            prev = current;
+            current = current.getNextNode();
+
+           reverseList(current,prev);
+        }
+        return null;
 
     }
 

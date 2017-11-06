@@ -78,19 +78,39 @@ public class BinarySearchTree {
         return -1;
     }
 
-    //find height and print the data of binary tree
-    public void printBinaryTree(){
+    public static void printGivenLevel(int level, TreeNode node){
+        if(node == null) return;
+
+        if(level ==1 ) System.out.print(node.getData() + "\t");
+
+        printGivenLevel(level-1,node.getLeftNode());
+        printGivenLevel(level-1,node.getRightNode());
+    }
+
+    public static void printGivenSpiral(int level, TreeNode node,boolean flag){
+        if(node == null) return;
+
+        if(level ==1 ) System.out.print(node.getData() + "\t");
+
+        if(flag){
+            printGivenLevel(level-1,node.getRightNode());
+            printGivenLevel(level-1,node.getLeftNode());
+        }else {
+            printGivenLevel(level-1,node.getLeftNode());
+            printGivenLevel(level-1,node.getRightNode());
+        }
 
 
     }
 
     private static  int getHeight(TreeNode node){
       if(node == null){
-            return -1;
+            return 0;
         }
 
         //get left height
-       lheight = getHeight(node.getLeftNode());rheight = getHeight(node.getRightNode());
+       lheight = getHeight(node.getLeftNode());
+        rheight = getHeight(node.getRightNode());
 
         if(lheight > rheight){
             return lheight+1;
@@ -103,7 +123,22 @@ public class BinarySearchTree {
         BinarySearchTree binaryTree = new BinarySearchTree();
         //create the tree
         TreeNode root = createBinaryTree();
-       // root.insertNode(root,50);
+           System.out.println("height of tree is "+getHeight(root));
+           /*for (int i = getHeight(root); i >=1 ; i--) {
+               printGivenLevel(i,root);
+               System.out.println();
+           }
+
+           printGivenLevel(getHeight(root), root);*/
+           /**for spiral order, just store a boolean function for the level
+            * and alternativley print the data.
+            *
+           **/
+
+           /*for (int i = 1; i <= getHeight(root); i++) {
+               printGivenSpiral(i,root,i%2 == 0 ? true :false);
+           }*/
+      /* // root.insertNode(root,50);
            System.out.println("printing in order *****");
         root.inOrder(root);
            System.out.println("*******");
@@ -112,8 +147,9 @@ public class BinarySearchTree {
         findPreSuccessor(root, 30);
            System.out.println("presssedor of  is "+ precedessor);
            System.out.println("successor of is "+ successor);
-        //System.out.println(root.checkBinarySearchTree(root,null));
-        //System.out.println(root.getMax(root));
+
+        //System.out.println(root.getMax(root));*/
+           System.out.println(TreeNode.checkBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 
     }
 
