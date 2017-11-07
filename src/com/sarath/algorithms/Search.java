@@ -13,8 +13,9 @@ public class Search {
     public static void main (String args[]){
 
         //Input the number of test cases
-        Scanner sc = new Scanner(System.in);
-        String str = "am i a good programmer";
+
+        String str = "ami a goodprogrammer";
+        System.out.println(splitString(str,' '));
         //int t= sc.nextInt();
 
 
@@ -22,7 +23,7 @@ public class Search {
             List<String> sb = reverseString(str);
 
             for (String mystring : sb) {
-                System.out.print(mystring);
+               //System.out.print(mystring);
             }
         }
 
