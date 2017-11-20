@@ -83,7 +83,7 @@ public class Questions {
 
         System.out.print("Reversed List is \n");
 
-        printLinkedList(LinkedList.reverseList(list.getHead(),null));
+        printLinkedList(LinkedList.reverseList(list.getHead()));
 
         // add the two lists and see the result
         Node rs = getSumofList(list.getHead(),list2.getHead());
@@ -186,4 +186,6 @@ public class Questions {
     private static  void swap(String str, int left, int right){
 
     }
+
+    //Design a calculator with String as input.
 }

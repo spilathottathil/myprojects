@@ -16,12 +16,15 @@ public class LinkedListDemo {
         list.insertNextNode(10);
         list.insertNextNode(11);
 
-        list.deleteHeadNode();
+        list.printLinkedListRecurse(list.getHead());
+       Node head =  list.reverseList(list.getHead());
+        System.out.println("reversed list is: ");
+        list.printLinkedList(head);
 
-        System.out.println(list.searchLinkedList(11));
+       // System.out.println(list.searchLinkedList(11));
 
-        System.out.println(list.getLength());
+        //System.out.println(list.getLength());
 
-        System.out.println(list);
+        //System.out.println(list);
     }
 }

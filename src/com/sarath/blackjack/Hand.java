@@ -26,7 +26,7 @@ public class Hand  {
 
     public  List<Card> getHand(List<Card> listCard, int number){
 
-        List<Card> handView = listCard.subList(listCard.size()-number,listCard.size());
+        List<Card> handView = listCard.subList(0, listCard.size() - (listCard.size() - number));
         List<Card> hand = new ArrayList<Card>(handView);
         handView.clear();
         return hand;

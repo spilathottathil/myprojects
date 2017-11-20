@@ -31,7 +31,7 @@ public class Employee  implements Comparable<Employee>{
 
             return this.name.compareTo(e.name);
         }else {
-            return this.salaray - e.getSalaray();
+            return  e.getSalaray() - this.getSalaray();
         }
     }
 

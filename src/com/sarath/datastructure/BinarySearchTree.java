@@ -12,6 +12,14 @@ public class BinarySearchTree {
     private static Integer precedessor, successor;
     private static int lheight=1, rheight=1;
 
+    public TreeNode getRootNode() {
+        return rootNode;
+    }
+
+    public void setRootNode(TreeNode rootNode) {
+        this.rootNode = rootNode;
+    }
+
     public TreeNode findData(Integer data){
         if(rootNode != null){
             rootNode.findData(data);
@@ -127,9 +135,9 @@ public class BinarySearchTree {
            /*for (int i = getHeight(root); i >=1 ; i--) {
                printGivenLevel(i,root);
                System.out.println();
-           }
+           }*/
 
-           printGivenLevel(getHeight(root), root);*/
+           printGivenLevel(getHeight(root), root);
            /**for spiral order, just store a boolean function for the level
             * and alternativley print the data.
             *

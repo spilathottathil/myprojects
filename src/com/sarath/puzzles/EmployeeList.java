@@ -11,16 +11,16 @@ public class EmployeeList {
 
 
             Employee emp1 = new Employee();
-            emp1.setName("Adam");
-            emp1.setSalaray(220);
+            emp1.setName("Adam John");
+            emp1.setSalaray(0);
 
         Employee emp2 = new Employee();
-        emp2.setName("John");
-        emp2.setSalaray(250);
+        emp2.setName("John Adam");
+        emp2.setSalaray(0);
 
         Employee emp3 = new Employee();
-        emp3.setName("Monai");
-        emp3.setSalaray(2990);
+        emp3.setName("Monai John");
+        emp3.setSalaray(0);
 
         employeeList.add(emp1);
         employeeList.add(emp2);
@@ -28,8 +28,10 @@ public class EmployeeList {
        // employeeList.forEach(e -> { if(e.getSalaray().equals(0) ) });
 
 
+
+
         //method 1
-       // Collections.sort(employeeList);
+
         //insertionSort(employeeList);
         //System.out.println(employeeList);
         //method 2 : use any sorting alogorthm

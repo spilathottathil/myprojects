@@ -39,6 +39,7 @@ public class LinkedList {
         return false;
     }
 
+
     void insertAtSortedList(Node newNode) {
         Node currentNode = this.head;
 
@@ -141,23 +142,38 @@ public class LinkedList {
         return n;
     }
 
-    public static Node reverseList(Node current, Node prev){
+    public static Node reverseList(Node current){
 
-        LinkedList reversedList = new LinkedList();
-
-        if(current.getNextNode() == null){
-            reversedList.setHead(current);
-
-            return reversedList.getHead();
-        }else {
-
-            prev = current;
-            current = current.getNextNode();
-
-           reverseList(current,prev);
+      Node prev = null;
+      Node next;
+        if(current == null || current.getNextNode() ==null){
+            return current;
         }
-        return null;
 
+        while(current!=null){
+            next = current.getNextNode();
+            current.setNextNode(prev);
+            prev = current;
+            current = next;
+        }
+        return prev;
     }
+
+    public void printLinkedList(Node node){
+        while(node != null){
+            System.out.println(node.getData());
+            node = node.getNextNode();
+        }
+    }
+
+    public void printLinkedListRecurse(Node node){
+       if(node == null){
+           return;
+       }else {
+           System.out.println(node.getData());
+           printLinkedList(node.getNextNode());
+       }
+    }
+
 
 }
