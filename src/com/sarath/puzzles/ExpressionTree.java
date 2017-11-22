@@ -28,34 +28,44 @@ public class ExpressionTree {
     private static  String infixToPostFix(String exp){
       java.util.Stack<String> expStack = new java.util.Stack<>();
         StringBuilder out = new StringBuilder();
-        ArrayList<String> temp = new ArrayList<>();
         for (int i = 0; i < exp.length() ; i++) {
             char current = exp.charAt(i);
-            if(!isOperator(current)){
+
+/*
+            if(current == '('){
+                //push to stack
+                expStack.push(String.valueOf(current));
+            } else if (current == ')'){
+
+                    while (!expStack.isEmpty() && expStack.peek().charAt(0) != '(') {
+                        out.append(expStack.pop());
+                    }
+                    if (expStack.isEmpty() || expStack.peek().charAt(0) != '(') {
+                        return "Invalid expression";
+                    } else{
+                        expStack.push(String.valueOf(current));
+                    }
+
+
+            }else*/ if(!isOperator(current)){
                 //push to the o/p
                 out.append(String.valueOf(current));
-            }else {
+            }
+            else {
                 //need to check the precedence
                 if( expStack.isEmpty()){
                     expStack.push(String.valueOf(current));
                 }else {
                     //pop till u get a less precedence operator.
-                    while( !expStack.isEmpty() && getPrecedence(current) > getPrecedence(expStack.peek().charAt(0))){
-                        temp.add(expStack.pop());
+                    while( !expStack.isEmpty() && getPrecedence(current) >= getPrecedence(expStack.peek().charAt(0))){
+                      out.append(expStack.pop());
                     }
                     expStack.push(String.valueOf(current));
-                    //now recreate the stack
-                    for (int k = temp.size()-1; k >=0 ; k--) {
-                        expStack.push(temp.get(k));
-                    }
-                    temp.clear();
                 }
             }
         }
 
-
-
-        //Now the stack is in the order of ascending order of precedence.
+       //Now the stack is in the order of ascending order of precedence.
         while (!expStack.isEmpty()){
             out.append(expStack.pop());
         }
@@ -77,7 +87,11 @@ public class ExpressionTree {
         return precedence;
     }
 
-
+    /**
+     *
+     * @param expr
+     * @return
+     */
 
     private static MyTreeNode createExpressionTree(char[] expr){
         java.util.Stack<MyTreeNode> myStack = new java.util.Stack();
@@ -112,11 +126,41 @@ public class ExpressionTree {
 
 
     public static void main(String[] args) {
-        String expr = infixToPostFix("3+5*4/2");
+
+        System.out.println(3/2);
+        String expr = infixToPostFix("3*7*2/3");
+
+        System.out.println(expr);
 
         MyTreeNode t =  createExpressionTree(expr.toCharArray());
+
         printInOrder(t);
+
+        //Now evaluate the expression tree.
+        System.out.println(evaluateExpressionTree(t));
    }
+
+    private static int evaluateExpressionTree(MyTreeNode node){
+
+       if(node == null ) return 0;
+
+        if(node.left == null || node.right == null ) return Character.getNumericValue(node.root);
+       int left = evaluateExpressionTree(node.left);
+       int right = evaluateExpressionTree(node.right);
+        return solveEquation(node.root,left,right);
+    }
+
+    private static  int solveEquation(char c, int left, int right){
+
+        switch (c){
+            case '+' : return left + right;
+            case '-' : return left - right;
+            case '*' : return left * right;
+            case '/' : return left /right;
+            default: throw new RuntimeException("invalid");
+        }
+
+    }
 
     private static void printInOrder(MyTreeNode node){
         if(node != null){
