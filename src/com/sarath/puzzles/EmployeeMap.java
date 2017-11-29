@@ -40,7 +40,7 @@ public class EmployeeMap {
         }*/
 
 
-        Collections.sort(myEmployeeList);
+       // Collections.sort(myEmployeeList);
         System.out.println("full list " + myEmployeeList);
         System.out.println(myEmployeeList.subList(myEmployeeList.size() - 3,myEmployeeList.size() ));
     }

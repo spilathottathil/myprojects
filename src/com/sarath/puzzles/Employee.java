@@ -3,7 +3,7 @@ package com.sarath.puzzles;
 /**
  * Created by spilathottathil on 10/26/17.
  */
-public class Employee  implements Comparable<Employee>{
+public class Employee  {
 
     private Integer salaray;
     private String name;
@@ -24,7 +24,7 @@ public class Employee  implements Comparable<Employee>{
         this.name = name;
     }
 
-    @Override
+   /* @Override
     public int compareTo(Employee e){
 
         if( this.salaray.compareTo(e.getSalaray()) == 0) {
@@ -33,10 +33,18 @@ public class Employee  implements Comparable<Employee>{
         }else {
             return  e.getSalaray() - this.getSalaray();
         }
-    }
+    }*/
 
     @Override
     public String toString(){
         return this.salaray + " " + this.name+"\n";
     }
+
+//    //Approach with inner class.
+//    private class SalaryComapre implements Comparable<Employee>{
+//        @Override
+//        public int compareTo(Employee e){
+//            return e.salaray - Employee.this.salaray;
+//        }
+//    }
 }

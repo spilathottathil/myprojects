@@ -12,19 +12,29 @@ public class EmployeeList {
 
             Employee emp1 = new Employee();
             emp1.setName("Adam John");
-            emp1.setSalaray(0);
+            emp1.setSalaray(200);
 
         Employee emp2 = new Employee();
         emp2.setName("John Adam");
-        emp2.setSalaray(0);
+        emp2.setSalaray(250);
 
         Employee emp3 = new Employee();
         emp3.setName("Monai John");
-        emp3.setSalaray(0);
+        emp3.setSalaray(7888);
 
         employeeList.add(emp1);
         employeeList.add(emp2);
         employeeList.add(emp3);
+
+        Collections.sort(employeeList, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.getSalaray() - o2.getSalaray();
+            }
+        });
+
+        System.out.println(employeeList);
+
        // employeeList.forEach(e -> { if(e.getSalaray().equals(0) ) });
 
 
@@ -38,7 +48,7 @@ public class EmployeeList {
         int[] arrayA = {23,45,6,78,9,45,32,99,878989,3,2,997};
         mergeSort(0,arrayA.length-1,arrayA);
         for (int i = 0; i <arrayA.length ; i++) {
-           System.out.println(arrayA[i]);
+           //System.out.println(arrayA[i]);
         }
 
     }
