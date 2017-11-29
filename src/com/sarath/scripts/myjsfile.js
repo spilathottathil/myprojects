@@ -55,17 +55,11 @@ MathSarath.fact = function(n){
  }
 
 //convert json in to an array.
-var jsondata = {
-               "name":"John",
-               "age":30,
-               "cars":[ "Ford", "BMW", "Fiat" ],
-               "name":"Joseph",
-               "age":33,
-               "cars":[ "Ford", "BMW", "Fiat" ,"Hyundai"],
-               "name":"Alex",
-              "age":36,
-              "cars":[ "Ford", "BMW","Hyundai"],
-               }
+var jsondata = '{
+                 "name":"John",
+               "age":"30",
+               "cars":[ "Ford", "BMW", "Fiat" ]
+               }';
 
 //convert to array
 var outarray = [];
@@ -77,3 +71,10 @@ outarray.toString();
 keys.forEach(function(key){
     outarray.push(jsondata[key]);
 });
+
+//closures in js. uses local variables inside fucntion.
+function makeMulttimer(){
+    return function(n,m){ return n * m;
+    };
+}
+
