@@ -155,7 +155,7 @@ public class TreeNode {
 
         if(node.data < min || node.data > max) return false;
 
-        return (checkBST(node.leftNode,min , node.data -1)&&
+        return (checkBST(node.leftNode,Integer.MIN_VALUE , node.data -1)&&
         checkBST(node.rightNode, node.data +1,max)) ;
 
     }
