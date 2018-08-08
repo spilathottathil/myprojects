@@ -1,6 +1,10 @@
 package com.sarath.datastructure;
 
-import java.util.Hashtable;
+import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import java.util.regex.Pattern;
 
 /**
  * Created by spilathottathil on 10/21/17.
@@ -95,6 +99,43 @@ public class BinarySearchTree {
         printGivenLevel(level-1,node.getRightNode());
     }
 
+    //1 q and delimiter
+    public static void printLevel(TreeNode rootNode){
+
+     Queue<TreeNode> myQ = new LinkedList();
+
+         TreeNode current = rootNode;
+
+        myQ.add(current);
+        myQ.add(null);
+        while (!myQ.isEmpty()) {
+            current = myQ.poll();
+
+
+            if (current != null) {
+
+                if (current.getLeftNode() != null) {
+                    myQ.add(current.getLeftNode());
+                }
+                if (current.getRightNode() != null) {
+                    myQ.add(current.getRightNode());
+                }
+                System.out.println(current.getData());
+
+            } else {
+                if(!myQ.isEmpty()) {
+                    System.out.println("----\n");
+                    myQ.add(null);
+                }
+            }
+        }
+
+
+
+
+    }
+
+
     public static void printGivenSpiral(int level, TreeNode node,boolean flag){
         if(node == null) return;
 
@@ -131,13 +172,17 @@ public class BinarySearchTree {
         BinarySearchTree binaryTree = new BinarySearchTree();
         //create the tree
         TreeNode root = createBinaryTree();
-           System.out.println("height of tree is "+getHeight(root));
+           //System.out.println("height of tree is "+getHeight(root));
+           printLevel(root);
+
+
+
            /*for (int i = getHeight(root); i >=1 ; i--) {
                printGivenLevel(i,root);
                System.out.println();
            }*/
 
-           printGivenLevel(getHeight(root), root);
+          // printGivenLevel(getHeight(root), root);
            /**for spiral order, just store a boolean function for the level
             * and alternativley print the data.
             *
@@ -157,7 +202,7 @@ public class BinarySearchTree {
            System.out.println("successor of is "+ successor);
 
         //System.out.println(root.getMax(root));*/
-           System.out.println(TreeNode.checkBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+          // System.out.println(TreeNode.checkBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 
     }
 

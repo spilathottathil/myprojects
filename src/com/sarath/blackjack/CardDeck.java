@@ -31,6 +31,7 @@ public class CardDeck  {
     public void shuffle(){
 
         Collections.shuffle(cardDeck);
+
         //Iterative solution.
         /*for (int i = cardDeck.size(); i >0 ; i--) {
             int j = (int)Math.random()* (i+1);

@@ -8,7 +8,7 @@ public class InsertionSort {
     public static void main(String[] args) {
 
 
-        int[] arrayA = {10,8};
+        int[] arrayA = {12, 11, 13, 5, 6};
         insertionSort(arrayA);
         //print sorted array
         System.out.println("\nsorted array is: ");
@@ -22,7 +22,7 @@ public class InsertionSort {
     private static  void insertionSort(int[] arrayIN){
         int N = arrayIN.length;
 
-        for (int i = 0; i <N ; i++) {
+        for (int i = 1; i <N ; i++) {
             int current = arrayIN[i];
             int j = i-1;
             while(j>=0 && arrayIN[j] > current){

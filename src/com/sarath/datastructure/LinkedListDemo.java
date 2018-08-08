@@ -10,16 +10,16 @@ public class LinkedListDemo {
 
         list.insertNextNode(4);
         list.insertNextNode(6);
-        list.insertNextNode(7);
+        list.insertNextNode(6);
         list.insertNextNode(8);
         list.insertNextNode(9);
         list.insertNextNode(10);
         list.insertNextNode(11);
 
-        list.printLinkedListRecurse(list.getHead());
-       Node head =  list.reverseList(list.getHead());
+        //list.printLinkedListRecurse(list.getHead());
+      // Node head =  list.reverseList(list.getHead());
         System.out.println("reversed list is: ");
-        list.printLinkedList(head);
+        list.printLinkedList(list.removeDuplicates2(list.getHead()));
 
        // System.out.println(list.searchLinkedList(11));
 

@@ -175,5 +175,25 @@ public class LinkedList {
        }
     }
 
+    public  Node removeDuplicates2(Node head) {
+
+
+        if(head == null){
+            return head;
+        }
+        Node current = head;
+        LinkedList newList = new LinkedList();
+        newList.insertNextNode(current.getData());
+        while(current.getNextNode() != null){
+            if(current == current.getNextNode()){
+                current = current.getNextNode().getNextNode();
+            }else{
+                current = current.getNextNode();
+            }
+            newList.insertNextNode(current.getData());
+        }
+        return newList.head;
+    }
+
 
 }

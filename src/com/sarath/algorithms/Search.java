@@ -3,21 +3,26 @@ package com.sarath.algorithms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Created by spilathottathil on 8/24/17.
  */
 public class Search {
+    private static final Scanner sc = new Scanner(System.in);
 
     //This is the common template for every program.
     public static void main (String args[]){
 
         //Input the number of test cases
+        int t=1;
 
-        String str = "ami a goodprogrammer";
-        System.out.println(splitString(str,' '));
+
+       /* String str = "ami a goodprogrammer";
+        //System.out.println(splitString(str,' '));
         //int t= sc.nextInt();
-
+        char[] myarr = new char[]{'a','m',' ','g','o'};
+        reverseWords(myarr);
 
         if(!str.isEmpty()) {
             List<String> sb = reverseString(str);
@@ -25,11 +30,11 @@ public class Search {
             for (String mystring : sb) {
                //System.out.print(mystring);
             }
-        }
+        }*/
 
 
 
-        /*int[] myArr = new int[100];
+        int[] myArr = new int[100];
 
         while(t>0){
             //size of the array
@@ -52,7 +57,30 @@ public class Search {
 
             }
 
-        }*/
+        }
+
+    }
+
+    private  static  void reverseWords(char[] myArray){
+
+
+        Stack<String> myStack = new Stack<>();
+        String str = " ";
+        for (int i = 0; i <myArray.length ; i++) {
+            if(myArray[i] == ' ' ){
+                myStack.push(str);
+                str = new String();
+            }else if(i == myArray.length -1){
+                myStack.push(str + myArray[i]);
+            }
+            else{
+                str = str + myArray[i];
+            }
+        }
+
+        while(!myStack.empty()){
+            System.out.print(myStack.pop()+" ");
+        }
 
     }
 
@@ -66,7 +94,7 @@ public class Search {
 
     private static  int myBinarySearch(int[] myarr, int start,int end, int x){
 
-       if(end >=1) {
+       if(start <= end) {
            //Split the array
            int mid = start+  (end - start) / 2;
 

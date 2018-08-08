@@ -27,6 +27,8 @@ public class ExpressionTree {
      */
     private static  String infixToPostFix(String exp){
       java.util.Stack<String> expStack = new java.util.Stack<>();
+
+
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < exp.length() ; i++) {
             char current = exp.charAt(i);
@@ -127,14 +129,13 @@ public class ExpressionTree {
 
     public static void main(String[] args) {
 
-        System.out.println(3/2);
-        String expr = infixToPostFix("3*7*2/3");
+        String expr = infixToPostFix("37*2/3");
 
         System.out.println(expr);
 
         MyTreeNode t =  createExpressionTree(expr.toCharArray());
 
-        printInOrder(t);
+       // printInOrder(t);
 
         //Now evaluate the expression tree.
         System.out.println(evaluateExpressionTree(t));

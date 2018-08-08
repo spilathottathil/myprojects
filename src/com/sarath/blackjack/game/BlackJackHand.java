@@ -38,7 +38,6 @@ public class BlackJackHand extends Hand {
         CardDeck cardDeck = new CardDeck();
         cardDeck.shuffle();
         Hand hand = new Hand();
-
         for (int i = 0; i < 3; i++) {
            List<Card> myHand =  hand.getHand(cardDeck.getCardDeck(),2);
             BlackJackHand blackJackHand = new BlackJackHand(myHand);

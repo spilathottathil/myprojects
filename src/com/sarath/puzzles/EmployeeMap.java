@@ -11,10 +11,12 @@ public class EmployeeMap {
 
     public static void main(String[] args) {
         HashMap<String, Integer> employees = new HashMap<String,Integer>();
+        boolean flag = false;
         employees.put("Douglas",2);
         employees.put("Adam",4);
         employees.put("Micheal",1);
         employees.put("Theressa",10);
+
 
         //System.out.println(employees);
 
@@ -24,6 +26,7 @@ public class EmployeeMap {
             Employee sortEmployee = new Employee();
             sortEmployee.setName(employee.getKey());
             sortEmployee.setSalaray(employee.getValue());
+            sortEmployee.setFlag(flag);
             myEmployeeList.add(sortEmployee);
         }
 
@@ -39,10 +42,10 @@ public class EmployeeMap {
             myEmployeeList.add(sortEmployee);
         }*/
 
+        Collections.sort(myEmployeeList);
 
-       // Collections.sort(myEmployeeList);
         System.out.println("full list " + myEmployeeList);
-        System.out.println(myEmployeeList.subList(myEmployeeList.size() - 3,myEmployeeList.size() ));
+       // System.out.println(myEmployeeList.subList(myEmployeeList.size() - 3,myEmployeeList.size() ));
     }
 
 
