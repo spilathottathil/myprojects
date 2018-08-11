@@ -1,5 +1,7 @@
 package com.sarath.puzzles;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -13,18 +15,33 @@ public class Alexa {
         List<String> employeeList = new ArrayList<String>();
         employeeList.add("AAron org.jboss.resteasy.core.registry.SegmentNode.ma");
         employeeList.add("Peeli org.jboss.resteasy.core.registry.SegmentNode.ma");
-        employeeList.add("Adam 63984909-5eb4-4924-99f2-537e01b9a1f4");
-        employeeList.add("John RESTEASY003210: Could not find resource for full path");
+        employeeList.add("Adam 63984909 5eb4-4924-99f2-537e01b9a1f4");
+        employeeList.add("Pappy 639849095eb4-4924-99f2-537e01b9a1f4");
+        employeeList.add("John rESTEASY003210: Could not find resource for full path");
         employeeList.add("Baby HttpChannel.handle(HttpChannel.java:334)");
 
-
-
         //List<String> out1 = getMaxOccurance(employeeList);
-        List<LogFile> out1 = sortLogFiles(employeeList);
+        List<LogFile> sortedList = sortLogFiles(employeeList);
 
-        for(LogFile s :out1){
-            System.out.println(s.getFirstPart()+" "+s.getNextPart());
+        for(LogFile s :sortedList){
+           // System.out.println(s.getFirstPart()+" "+s.getNextPart());
+            System.out.println(s.getFulltext());
         }
+        System.out.println("-----------------");
+        List<String> employeeList2 = new ArrayList<String>();
+        employeeList2.add("org.jboss.resteasy.core.registry.SegmentNode.ma");
+        employeeList2.add("org.jboss.resteasy.core.registry.SegmentNode.ma");
+        //employeeList2.add("63984909-5eb4-4924-99f2-537e01b9a1f4");
+        employeeList2.add("RESTEASY003210: Could not find resource for full path");
+        employeeList2.add("HttpChannel.handle(HttpChannel.java:334)");
+        employeeList2.add("639849095eb4-4924-99f2-537e01b9a1f4");
+
+        Collections.sort(employeeList2);
+        for(String s : employeeList2) {
+            System.out.println(s);
+        }
+
+
 
     }
 
@@ -33,26 +50,26 @@ public class Alexa {
      * @return
      */
     private static List<LogFile> sortLogFiles(List<String>  logFileList){
-        List<LogFile> sorted = new ArrayList<>();
-        List<LogFile> unsorted = new ArrayList<>();
+        List<LogFile> characterList = new ArrayList<>();
+        List<LogFile> alphaNumericList = new ArrayList<>();
 
         //Iterate
         for(String s : logFileList){
             LogFile logFile = new LogFile();
-            String [] parts = s.split(" ",2);
+            logFile.setFulltext(s);
+            String [] parts = s.split(" ",3);
             logFile.setFirstPart(parts[0]);
             logFile.setNextPart(parts[1]);
-            if(Character.isDigit(logFile.getNextPart().charAt(0))){
-                unsorted.add(logFile);
-            }else{
-                sorted.add(logFile);
+            try {
+                 Integer.parseInt(logFile.getNextPart());
+                 alphaNumericList.add(logFile);
+            }catch (NumberFormatException nfe){
+                characterList.add(logFile);
             }
-
         }
-        Collections.sort(sorted);
-
-        sorted.addAll(unsorted);
-        return  sorted;
+        Collections.sort(characterList);
+        characterList.addAll(alphaNumericList);
+        return  characterList;
     }
 
     /**

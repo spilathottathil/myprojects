@@ -9,6 +9,15 @@ public class LogFile implements Comparable<LogFile>{
 
     private String firstPart;
     private String nextPart;
+    private String fulltext;
+
+    public String getFulltext() {
+        return fulltext;
+    }
+
+    public void setFulltext(String fulltext) {
+        this.fulltext = fulltext;
+    }
 
     public String getFirstPart() {
         return firstPart;

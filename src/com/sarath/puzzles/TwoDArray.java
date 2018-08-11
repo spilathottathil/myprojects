@@ -1,9 +1,6 @@
 package com.sarath.puzzles;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TwoDArray {
 
@@ -36,6 +33,8 @@ public class TwoDArray {
             }
 
         }
+
+
 
         ArrayList<ScoreBean> scoreBeanArrayList = new ArrayList<>();
 

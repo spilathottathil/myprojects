@@ -19,21 +19,23 @@ public class EmployeeList {
         emp2.setSalaray(250);
 
         Employee emp3 = new Employee();
-        emp3.setName("Monai John");
+        emp3.setName("Monai");
         emp3.setSalaray(7888);
+
+        Employee emp4 = new Employee();
+        emp4.setName("Monai");
+        emp4.setSalaray(7888);
 
         employeeList.add(emp1);
         employeeList.add(emp2);
         employeeList.add(emp3);
+        employeeList.add(emp4);
 
+        Employee emptest = new Employee();
+        emptest.setName("Adam John");
+        emptest.setSalaray(200);
 
-        Collections.sort(employeeList, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                return o1.getSalaray() - o2.getSalaray();
-            }
-        });
-
+        System.out.println(Collections.frequency(employeeList,emptest));
         System.out.println(employeeList);
 
        // employeeList.forEach(e -> { if(e.getSalaray().equals(0) ) });
